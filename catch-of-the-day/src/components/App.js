@@ -10,6 +10,7 @@ class App extends React.Component {
 	constructor() {
 		super();
 		this.addFish = this.addFish.bind(this);
+		this.updateFish = this.updateFish.bind(this);
 		this.loadSamples = this.loadSamples.bind(this);
 		this.addToOrder = this.addToOrder.bind(this);
 		//initial state
@@ -22,8 +23,7 @@ class App extends React.Component {
 	componentWillMount() {
 		// this runs right before the <App> is rendered
 		let url = this.props.params.storeId;
-		this.ref = base.syncState('url/fishes'
-			,{
+		this.ref = base.syncState(`${this.props.params.storeId}/fishes`,{
 				context: this,
 				state: 'fishes'
 			});
@@ -53,6 +53,12 @@ class App extends React.Component {
 		const timestamp = Date.now();
 		fishes[`fish-${timestamp}`] = fish;
 		//set state
+		this.setState({fishes});
+	}
+
+	updateFish(key, updatedFish) {
+		const fishes = {...this.state.fishes};
+		fishes[key] = updatedFish;
 		this.setState({fishes});
 	}
 
@@ -91,6 +97,7 @@ class App extends React.Component {
 				<Inventory addFish={this.addFish} 
 					loadSamples={this.loadSamples} 
 					fishes={this.state.fishes}
+					updateFish={this.updateFish}
 					/>
 			</div>
 		)
