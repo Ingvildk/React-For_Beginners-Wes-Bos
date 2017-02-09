@@ -5,7 +5,21 @@ class Order extends React.Component {
   constructor() {
     super();
     this.renderOrder = this.renderOrder.bind(this);
+    this.handleChange = this.handleChange.bind(this);
   }
+
+  handleChange(e, key) {
+    //takes the order value we edited from passed down props
+    const order = this.props.order[key];
+    //modifies the key word we edited. e.g. price name and so on
+    const updatedOrder = {
+      ...order,
+      [e.target.name]: e.target.value
+    }
+    //calls the passed down props method which takes the name of the fish and the new updated version
+    this.props.updateOrder(key, updatedOrder);
+  }
+
   renderOrder(key) {
     const fish = this.props.fishes[key];
     const count = this.props.order[key];
