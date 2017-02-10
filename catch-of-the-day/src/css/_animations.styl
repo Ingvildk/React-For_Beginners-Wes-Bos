@@ -5,3 +5,16 @@
   appear Must set transitionAppear={true} on animation component
 */
 
+a->b
+
+.order-enter
+	background red
+	transition all 0.5s
+	transform translateX(-120%)
+	max-height 0
+	padding 0 !important
+	&.order-enter-active
+		background yellow
+		max-height 60px
+		padding 2 rem 0 !important
+		transform translateX(0);
