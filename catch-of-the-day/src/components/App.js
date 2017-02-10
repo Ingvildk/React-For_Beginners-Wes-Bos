@@ -110,8 +110,7 @@ class App extends React.Component {
 						{Object
 							.keys(this.state.fishes)
 							.map(key => <Fish key={key} index={key} details={this.state.fishes[key]}
-									addToOrder={this.addToOrder} removeFish={this.removeFish} 
-									removeFromOrder={this.removeFromOrder} /> )}
+									addToOrder={this.addToOrder} removeFish={this.removeFish}  /> )}
 					</ul>
 				</div>
 				<Order fishes={this.state.fishes} order={this.state.order} 
@@ -119,6 +118,7 @@ class App extends React.Component {
 					order={this.state.order}
 					params={this.props.params}
 					updateOrder={this.updateOrder}
+					removeFromOrder={this.removeFromOrder}
 					/>
 				<Inventory 
 					removeFish={this.removeFish}
