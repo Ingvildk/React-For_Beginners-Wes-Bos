@@ -16,6 +16,18 @@ a->b.order-enter-active,
   -webkit-transform: translateX(0);
           transform: translateX(0);
 }
+.order-leave {
+  -webkit-transition: all 0.5s;
+  transition: all 0.5s;
+  -webkit-transform: translateX(0);
+          transform: translateX(0);
+}
+.order-leave.order-leave-active {
+  -webkit-transform: translateX(120%);
+          transform: translateX(120%);
+  max-height: 0;
+  padding: 0;
+}
 @font-face {
   font-family: "haymakerregular";
   src: url("./fonts/haymaker-webfont.eot");
